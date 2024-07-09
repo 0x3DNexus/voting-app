@@ -1,0 +1,38 @@
+{
+    "name":"Ravi Das",
+    "age": 49,
+    "mobile": 5461398,
+    "aadharNumber": 789456123,
+    "address": "123 Vasant Vihar",
+    "password": "this is my password"
+}
+
+{
+    "aadharNumber": 789456123,
+    "password": "this is my password"
+}
+
+{
+    "name":"Mohan Pal",
+    "age": 55,
+    "mobile": 478963,
+    "aadharNumber": 12345678910,
+    "address": "123 West Midnapore",
+    "password": "this is my password",
+    "role": "admin"
+}
+
+{
+    "aadharNumber": 12345678910,
+    "password": "this is my password"
+}
+
+{    
+    "name":"Mahendra Saha",
+    "age": 57,
+    "mobile": 987654,
+    "aadharNumber": 654987321,
+    "address": "123 West Barrakpore",
+    "party": "JJP"
+}
+
