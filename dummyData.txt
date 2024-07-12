@@ -36,3 +36,11 @@
     "party": "JJP"
 }
 
+{    
+    "name":"Mukesh Sinha",
+    "age": 57,
+    "mobile": 9845613,
+    "aadharNumber": 8875987321,
+    "address": "123 West Midnapore",
+    "party": "KJP"
+}

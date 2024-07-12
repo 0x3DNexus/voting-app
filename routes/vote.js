@@ -25,29 +25,27 @@ router.post('/', jwtauthMiddlewareFunction, async (req, res) =>{
     try{
         let {party} = req.body;
 
-        let voter = await user.findById(req.user.id);
-        if(!voter) res.status(400).send("Voter not found !!!");
-        if(voter.role === 'admin') res.status(200).send("Admin cannot vote !!!")
-        console.log(voter);
-
-        //check wheather the voter has already voted or not
-        if(voter.hasVoted) return res.status(200).json("Voter has already voted !");
-
+        let this_voter = await user.findById(req.user.id);
         let this_candidate = await candidate.findOne({party: party});
-        if(!this_candidate) res.status(400).send("Candidate not found !!!");
-        console.log(this_candidate);
 
-        voter.votedFor = this_candidate.party;
-        voter.hasVoted = true;
-        await voter.save();
+        if(!this_voter) res.status(400).send("voter not found !!!");
+        if(!this_candidate) return res.status(400).json({message: "Candidate not found !"});
+        if(this_voter.role === 'admin') return res.status(200).json({message: "Admin cannot vote"});
+
+        //check wheather the this_this_voter has already voted or not
+        if(this_voter.hasVoted) return res.status(400).json({message: "Voter has already voted"});        
+        
+        this_voter.votedFor = this_candidate.party;
+        this_voter.hasVoted = true;
+        await this_voter.save();
 
         this_candidate.noOfVotes += 1;
         await this_candidate.save();
-        res.status(200).json("Vote Successful !");
+        res.status(200).json({message: "Vote Successful !"});
     }
     catch(error){
         console.log(error);
-        res.status(500).send("Looks like Some Error Occured !");
+        res.status(500).json({message: "Looks like Some Error Occured !"});
     }
 })
 
