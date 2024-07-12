@@ -97,7 +97,7 @@ router.delete('/:candidateAadhar', jwtauthMiddlewareFunction, checkVoter, async 
         let this_candidate = await candidate.findOne({aadharNumber: candidateAadhar});
         if(!this_candidate) res.status(404).json({message: "Candidate not found"});
 
-        let votedUser = await user.updateMany({votedFor: this_candidate.party}, {$set:{votedFor: null}});
+        let votedUser = await user.updateMany({votedFor: this_candidate.party}, {$set:{votedFor: null, hasVoted: false}});
         
         await this_candidate.deleteOne();
 
